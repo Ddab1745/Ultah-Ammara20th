@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="5; url=main.html" />
+    <title>Selamat Ulang Tahun Ammara</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="ammaraVideo" autoplay>
+        <source src="./vid/netflix-intro.mp4" type="video/mp4">
+        Maaf, browser kamu tidak mendukung pemutaran video.
+    </video>
+
+    <script>
+        const video = document.getElementById("ammaraVideo");
+
+        // Minta fullscreen saat video siap diputar
+        video.addEventListener("canplay", () => {
+            // Minta fullscreen
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen(); // Safari
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen(); // IE11
+            }
+            video.play(); // pastikan video tetap diputar
+        });
+
+        // Kembali otomatis setelah video selesai
+        video.addEventListener("ended", () => {
+            window.location.href = "main.html"; // ganti ke halaman utama kamu
+        });
+    </script>
+</body>
+</html>
